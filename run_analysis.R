@@ -33,6 +33,7 @@ run_analysis <- function(data_path="UCI HAR Dataset") {
   
   # calculate the average of each variable for each activity and each subjecxt; sorting the output 
   measurement_average <- aggregate(measurement_data[,3:ncol(measurement_data)], by=list(measurement_data[,1], measurement_data[,2]), "mean")
+  names(measurement_average)[3:ncol(measurement_average)] <- paste("Avg.", measure_name, sep="")
   names(measurement_average)[1:2] <- c("Activity", "Subject")
   measurement_average<-measurement_average[order(measurement_average$Activity,measurement_average$Subject),]
   
